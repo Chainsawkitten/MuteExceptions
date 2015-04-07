@@ -21,4 +21,5 @@ HEADERS  += src/MainWindow.h \
 
 FORMS    += src/MainWindow.ui
 
-win32:LIBS += ole32.lib
+LIBS += -lole32
+CONFIG += c++11
