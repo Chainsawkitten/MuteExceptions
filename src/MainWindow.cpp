@@ -39,24 +39,28 @@ MainWindow::~MainWindow() {
 void MainWindow::addException() {
     if (!mutedSessions.empty()) {
         int index = ui->mutedListWidget->currentRow();
-        AudioSession* session = mutedSessions.at(index);
-        exceptedSessions.push_back(session);
-        ui->exceptionsListWidget->addItem(session->displayName());
-        mutedSessions.removeAt(index);
-        delete ui->mutedListWidget->currentItem();
-        statusLabel->setText("Added exception.");
+        if (index >= 0) {
+            AudioSession* session = mutedSessions.at(index);
+            exceptedSessions.push_back(session);
+            ui->exceptionsListWidget->addItem(session->displayName());
+            mutedSessions.removeAt(index);
+            delete ui->mutedListWidget->currentItem();
+            statusLabel->setText("Added exception.");
+        }
     }
 }
 
 void MainWindow::removeException() {
     if (!exceptedSessions.empty()) {
         int index = ui->exceptionsListWidget->currentRow();
-        AudioSession* session = exceptedSessions.at(index);
-        mutedSessions.push_back(session);
-        ui->mutedListWidget->addItem(session->displayName());
-        exceptedSessions.removeAt(index);
-        delete ui->exceptionsListWidget->currentItem();
-        statusLabel->setText("Removed exception.");
+        if (index >= 0) {
+            AudioSession* session = exceptedSessions.at(index);
+            mutedSessions.push_back(session);
+            ui->mutedListWidget->addItem(session->displayName());
+            exceptedSessions.removeAt(index);
+            delete ui->exceptionsListWidget->currentItem();
+            statusLabel->setText("Removed exception.");
+        }
     }
 }
 
