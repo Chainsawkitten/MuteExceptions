@@ -1,7 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QMessageBox>
-#include "version.h"
+#include "AboutDialog.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -74,7 +73,8 @@ void MainWindow::apply() {
 }
 
 void MainWindow::about() {
-    QMessageBox::about(this, "About Mute Exceptions", VERSION);
+    AboutDialog* aboutDialog = new AboutDialog(this);
+    aboutDialog->exec();
 }
 
 void MainWindow::createStatusBar() {
