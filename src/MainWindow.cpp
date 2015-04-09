@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 MainWindow::~MainWindow() {
     delete ui;
     delete statusLabel;
+    delete aboutDialog;
 
     for (AudioSession* audioSession : mutedSessions) {
         delete audioSession;
