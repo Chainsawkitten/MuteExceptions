@@ -17,7 +17,8 @@ SOURCES += src/main.cpp \
            src/AudioSession.cpp
 
 HEADERS  += src/MainWindow.h \
-            src/AudioSession.h
+            src/AudioSession.h \
+    src/version.h
 
 FORMS    += src/MainWindow.ui
 

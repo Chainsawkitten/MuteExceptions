@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow {
         void addException();
         void removeException();
         void apply();
+        void about();
 
     private:
         Ui::MainWindow *ui;

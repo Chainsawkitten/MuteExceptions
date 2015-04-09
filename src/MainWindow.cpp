@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QMessageBox>
+#include "version.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -8,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->addExceptionButton, SIGNAL(released()), SLOT(addException()));
     connect(ui->removeExceptionButton, SIGNAL(released()), SLOT(removeException()));
     connect(ui->applyButton, SIGNAL(released()), SLOT(apply()));
+    connect(ui->actionAbout, SIGNAL(triggered()), SLOT(about()));
 
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
     initAudio();
@@ -68,6 +71,10 @@ void MainWindow::apply() {
     }
 
     statusLabel->setText("Muting applied.");
+}
+
+void MainWindow::about() {
+    QMessageBox::about(this, "About Mute Exceptions", VERSION);
 }
 
 void MainWindow::createStatusBar() {
