@@ -14,6 +14,9 @@ class AboutDialog : public QDialog {
         explicit AboutDialog(QWidget *parent = 0);
         ~AboutDialog();
 
+    public slots:
+        void goToWebsite();
+
     private:
         Ui::AboutDialog *ui;
 };
