@@ -10,6 +10,7 @@ AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent), ui(new Ui::AboutDia
     ui->versionLabel->setText(VERSION);
 
     connect(ui->websiteButton, SIGNAL(released()), SLOT(goToWebsite()));
+    connect(ui->githubButton, SIGNAL(released()), SLOT(goToGithub()));
 }
 
 AboutDialog::~AboutDialog() {
@@ -18,4 +19,8 @@ AboutDialog::~AboutDialog() {
 
 void AboutDialog::goToWebsite() {
     QDesktopServices::openUrl(QUrl("http://muteexceptions.chainsawkitten.net/"));
+}
+
+void AboutDialog::goToGithub() {
+    QDesktopServices::openUrl(QUrl("https://github.com/Chainsawkitten/MuteExceptions"));
 }

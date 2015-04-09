@@ -2,5 +2,6 @@
     <qresource prefix="/MuteExceptions">
         <file>about.png</file>
         <file>website.png</file>
+        <file>github.png</file>
     </qresource>
 </RCC>

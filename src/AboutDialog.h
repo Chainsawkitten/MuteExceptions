@@ -16,6 +16,7 @@ class AboutDialog : public QDialog {
 
     public slots:
         void goToWebsite();
+        void goToGithub();
 
     private:
         Ui::AboutDialog *ui;
