@@ -27,3 +27,5 @@ FORMS    += src/MainWindow.ui \
 
 LIBS += -lole32
 CONFIG += c++11
+
+RESOURCES += resources/resources.qrc
