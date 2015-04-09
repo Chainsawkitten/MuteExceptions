@@ -16,17 +16,44 @@ namespace Ui {
     class MainWindow;
 }
 
+/**
+ * @brief Main window of the application.
+ */
 class MainWindow : public QMainWindow {
         Q_OBJECT
 
     public:
+        /**
+         * @brief Create new MainWindow.
+         * @param parent Parent widget.
+         */
         explicit MainWindow(QWidget *parent = 0);
+
+        /**
+         * @brief Free allocated resources.
+         */
         ~MainWindow();
 
     public slots:
+        /**
+         * @brief Add selected audio session to the exceptions.
+         */
         void addException();
+
+        /**
+         * @brief Remove selected audio session from the exceptions.
+         */
         void removeException();
+
+        /**
+         * @brief Apply muting/unmuting.
+         */
         void apply();
+
+        /**
+         * @brief Show about dialog.
+         * @see AboutDialog
+         */
         void about();
 
     private:
