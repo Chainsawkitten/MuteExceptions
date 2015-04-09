@@ -1,6 +1,5 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include "AboutDialog.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -10,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->removeExceptionButton, SIGNAL(released()), SLOT(removeException()));
     connect(ui->applyButton, SIGNAL(released()), SLOT(apply()));
     connect(ui->actionAbout, SIGNAL(triggered()), SLOT(about()));
+
+    aboutDialog = new AboutDialog(this);
 
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
     initAudio();
@@ -73,8 +74,7 @@ void MainWindow::apply() {
 }
 
 void MainWindow::about() {
-    AboutDialog* aboutDialog = new AboutDialog(this);
-    aboutDialog->exec();
+    aboutDialog->show();
 }
 
 void MainWindow::createStatusBar() {
