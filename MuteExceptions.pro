@@ -29,3 +29,4 @@ LIBS += -lole32
 CONFIG += c++11
 
 RESOURCES += resources/resources.qrc
+RC_FILE = resources/MuteExceptions.rc
