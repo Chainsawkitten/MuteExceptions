@@ -3,5 +3,6 @@
         <file>about.png</file>
         <file>website.png</file>
         <file>github.png</file>
+        <file>quit.png</file>
     </qresource>
 </RCC>
