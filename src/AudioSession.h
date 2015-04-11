@@ -41,6 +41,7 @@ class AudioSession {
     private:
         ISimpleAudioVolume* audioVolume;
         QString _displayName;
+        WINBOOL wasMuted;
 };
 
 #endif // AUDIOSESSION

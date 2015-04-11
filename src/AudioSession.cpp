@@ -8,6 +8,7 @@ AudioSession::AudioSession(IAudioSessionControl* sessionControl) {
 
     // Get audio volume.
     sessionControl->QueryInterface(__uuidof(ISimpleAudioVolume), (void**)&audioVolume);
+    audioVolume->GetMute(&wasMuted);
 
     // Get session identifier.
     LPWSTR sessionIdentifier;
@@ -20,6 +21,7 @@ AudioSession::AudioSession(IAudioSessionControl* sessionControl) {
 }
 
 AudioSession::~AudioSession() {
+    audioVolume->SetMute(wasMuted, NULL);
     audioVolume->Release();
 }
 
