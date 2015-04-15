@@ -1,5 +1,6 @@
 #include "AudioSession.h"
 #include <objbase.h>
+#include <QSettings>
 
 AudioSession::AudioSession(IAudioSessionControl* sessionControl) {
     // Get the extended session control interface pointer.
@@ -21,7 +22,14 @@ AudioSession::AudioSession(IAudioSessionControl* sessionControl) {
 }
 
 AudioSession::~AudioSession() {
-    audioVolume->SetMute(wasMuted, NULL);
+    QSettings settings;
+    settings.beginGroup("AudioSession");
+
+    if (settings.value("resetMute", true).toBool())
+        audioVolume->SetMute(wasMuted, NULL);
+
+    settings.endGroup();
+
     audioVolume->Release();
 }
 

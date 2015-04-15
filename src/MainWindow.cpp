@@ -4,6 +4,10 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    QCoreApplication::setOrganizationName("Chainsawkitten");
+    QCoreApplication::setOrganizationDomain("chainsawkitten.net");
+    QCoreApplication::setApplicationName("Mute Exceptions");
+
     createStatusBar();
     connect(ui->addExceptionButton, SIGNAL(released()), SLOT(addException()));
     connect(ui->removeExceptionButton, SIGNAL(released()), SLOT(removeException()));
