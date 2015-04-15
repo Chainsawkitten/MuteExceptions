@@ -4,5 +4,6 @@
         <file>website.png</file>
         <file>github.png</file>
         <file>quit.png</file>
+        <file>settings.png</file>
     </qresource>
 </RCC>

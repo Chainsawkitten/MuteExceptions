@@ -13,8 +13,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->addExceptionButton, SIGNAL(released()), SLOT(addException()));
     connect(ui->removeExceptionButton, SIGNAL(released()), SLOT(removeException()));
     connect(ui->applyButton, SIGNAL(released()), SLOT(apply()));
+    connect(ui->actionSettings, SIGNAL(triggered()), SLOT(settings()));
     connect(ui->actionAbout, SIGNAL(triggered()), SLOT(about()));
 
+    settingsDialog = new SettingsDialog(this);
     aboutDialog = new AboutDialog(this);
 
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
@@ -29,6 +31,7 @@ MainWindow::~MainWindow() {
 
     delete ui;
     delete statusLabel;
+    delete settingsDialog;
     delete aboutDialog;
 
     for (AudioSession* audioSession : mutedSessions) {
@@ -85,6 +88,13 @@ void MainWindow::apply() {
     }
 
     statusLabel->setText("Muting applied.");
+}
+
+void MainWindow::settings() {
+    settingsDialog->readSettings();
+    int result = settingsDialog->exec();
+    if (result == QDialog::Accepted)
+        settingsDialog->writeSettings();
 }
 
 void MainWindow::about() {

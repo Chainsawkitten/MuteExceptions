@@ -10,6 +10,7 @@
 #include <audiopolicy.h>
 
 #include "AudioSession.h"
+#include "SettingsDialog.h"
 #include "AboutDialog.h"
 
 namespace Ui {
@@ -51,6 +52,12 @@ class MainWindow : public QMainWindow {
         void apply();
 
         /**
+         * @brief Open settings dialog.
+         * @see SettingsDialog
+         */
+        void settings();
+
+        /**
          * @brief Show about dialog.
          * @see AboutDialog
          */
@@ -59,6 +66,7 @@ class MainWindow : public QMainWindow {
     private:
         Ui::MainWindow *ui;
         QLabel* statusLabel;
+        SettingsDialog* settingsDialog;
         AboutDialog* aboutDialog;
 
         IMMDeviceEnumerator* deviceEnumerator = nullptr;

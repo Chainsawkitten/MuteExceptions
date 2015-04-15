@@ -15,15 +15,18 @@ TEMPLATE = app
 SOURCES += src/main.cpp \
            src/MainWindow.cpp \
            src/AudioSession.cpp \
-    src/AboutDialog.cpp
+    src/AboutDialog.cpp \
+    src/SettingsDialog.cpp
 
 HEADERS  += src/MainWindow.h \
             src/AudioSession.h \
     src/version.h \
-    src/AboutDialog.h
+    src/AboutDialog.h \
+    src/SettingsDialog.h
 
 FORMS    += src/MainWindow.ui \
-    src/AboutDialog.ui
+    src/AboutDialog.ui \
+    src/SettingsDialog.ui
 
 LIBS += -lole32
 CONFIG += c++11
