@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -19,9 +20,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     CoInitializeEx(NULL, COINIT_APARTMENTTHREADED);
     initAudio();
     getAudioSessions();
+
+    readSettings();
 }
 
 MainWindow::~MainWindow() {
+    writeSettings();
+
     delete ui;
     delete statusLabel;
     delete aboutDialog;
@@ -138,4 +143,23 @@ void MainWindow::getAudioSessions() {
     }
 
     sessionEnumerator->Release();
+}
+
+void MainWindow::writeSettings() {
+    QSettings settings;
+
+    settings.beginGroup("MainWindow");
+    settings.setValue("size", size());
+    settings.setValue("pos", pos());
+    settings.endGroup();
+}
+
+void MainWindow::readSettings() {
+    QSettings settings;
+
+    settings.beginGroup("MainWindow");
+    resize(settings.value("size", QSize(640, 480)).toSize());
+    if (settings.contains("pos"))
+        move(settings.value("pos").toPoint());
+    settings.endGroup();
 }

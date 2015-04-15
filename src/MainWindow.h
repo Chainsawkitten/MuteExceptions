@@ -71,6 +71,8 @@ class MainWindow : public QMainWindow {
         void createStatusBar();
         void initAudio();
         void getAudioSessions();
+        void writeSettings();
+        void readSettings();
 };
 
 #endif // MAINWINDOW_H
