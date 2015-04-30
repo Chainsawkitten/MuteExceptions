@@ -28,7 +28,10 @@ FORMS    += src/MainWindow.ui \
     src/AboutDialog.ui \
     src/SettingsDialog.ui
 
-LIBS += -lole32
+win32:LIBS += -lole32
+win32:LIBS += -luser32
+win32:LIBS += -lpsapi
+win32:LIBS += -lkernel32
 CONFIG += c++11
 
 RESOURCES += resources/resources.qrc
