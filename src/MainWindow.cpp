@@ -128,7 +128,8 @@ void MainWindow::versionDownloaded() {
     QString oldVersion(VERSION);
 
     if (oldVersion != newVersion) {
-        QMessageBox::StandardButton reply = QMessageBox::question(this, "New version available", "A new version is available. Go to website?", QMessageBox::Yes | QMessageBox::No);
+        QString message = "A new version is available.\n\nCurrent version: " + oldVersion + "\nNew version: " + newVersion + "\n\nGo to website?";
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "New version available", message, QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::Yes) {
             QDesktopServices::openUrl(QUrl("http://muteexceptions.chainsawkitten.net/"));
             QApplication::quit();
