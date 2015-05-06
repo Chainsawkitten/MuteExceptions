@@ -49,6 +49,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QCheckBox" name="updateCheckBox">
+        <property name="text">
+         <string>Check for updates on start</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
