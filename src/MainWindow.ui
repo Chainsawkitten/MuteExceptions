@@ -143,6 +143,10 @@
    </property>
   </action>
   <action name="actionCheckUpdates">
+   <property name="icon">
+    <iconset resource="../resources/resources.qrc">
+     <normaloff>:/MuteExceptions/update.png</normaloff>:/MuteExceptions/update.png</iconset>
+   </property>
    <property name="text">
     <string>Check for Updates</string>
    </property>
