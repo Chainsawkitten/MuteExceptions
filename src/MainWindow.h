@@ -12,6 +12,7 @@
 #include "AudioSession.h"
 #include "SettingsDialog.h"
 #include "AboutDialog.h"
+#include "FileDownloader.h"
 
 namespace Ui {
     class MainWindow;
@@ -63,6 +64,11 @@ class MainWindow : public QMainWindow {
          */
         void about();
 
+        /**
+         * @brief Check if available version is newer than current version.
+         */
+        void versionDownloaded();
+
     private:
         Ui::MainWindow *ui;
         QLabel* statusLabel;
@@ -75,6 +81,8 @@ class MainWindow : public QMainWindow {
 
         QList<AudioSession*> mutedSessions;
         QList<AudioSession*> exceptedSessions;
+
+        FileDownloader* fileDownloader;
 
         void createStatusBar();
         void initAudio();

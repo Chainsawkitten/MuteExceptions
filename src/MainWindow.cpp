@@ -1,6 +1,10 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+
 #include <QSettings>
+#include <QMessageBox>
+#include <QDesktopServices>
+#include "version.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -24,6 +28,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     getAudioSessions();
 
     readSettings();
+
+    QUrl url("http://muteexceptions.chainsawkitten.net/getVersion.php");
+    fileDownloader = new FileDownloader(url, this);
+    connect(fileDownloader, SIGNAL(downloaded()), this, SLOT(versionDownloaded()));
 }
 
 MainWindow::~MainWindow() {
@@ -46,6 +54,8 @@ MainWindow::~MainWindow() {
     speakers->Release();
     deviceEnumerator->Release();
     CoUninitialize();
+
+    delete fileDownloader;
 }
 
 void MainWindow::addException() {
@@ -99,6 +109,19 @@ void MainWindow::settings() {
 
 void MainWindow::about() {
     aboutDialog->show();
+}
+
+void MainWindow::versionDownloaded() {
+    QString newVersion(fileDownloader->downloadedData());
+    QString oldVersion(VERSION);
+
+    if (oldVersion != newVersion) {
+        QMessageBox::StandardButton reply = QMessageBox::question(this, "New version available", "A new version is available. Go to website?", QMessageBox::Yes | QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            QDesktopServices::openUrl(QUrl("http://muteexceptions.chainsawkitten.net/"));
+            QApplication::quit();
+        }
+    }
 }
 
 void MainWindow::createStatusBar() {
