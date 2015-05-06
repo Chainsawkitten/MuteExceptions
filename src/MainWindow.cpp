@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->removeExceptionButton, SIGNAL(released()), SLOT(removeException()));
     connect(ui->applyButton, SIGNAL(released()), SLOT(apply()));
     connect(ui->actionSettings, SIGNAL(triggered()), SLOT(settings()));
+    connect(ui->actionCheckUpdates, SIGNAL(triggered()), SLOT(checkUpdates()));
     connect(ui->actionAbout, SIGNAL(triggered()), SLOT(about()));
 
     settingsDialog = new SettingsDialog(this);
@@ -112,6 +113,10 @@ void MainWindow::settings() {
     int result = settingsDialog->exec();
     if (result == QDialog::Accepted)
         settingsDialog->writeSettings();
+}
+
+void MainWindow::checkUpdates() {
+    fileDownloader->start();
 }
 
 void MainWindow::about() {

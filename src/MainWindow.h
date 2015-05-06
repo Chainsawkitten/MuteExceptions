@@ -59,6 +59,11 @@ class MainWindow : public QMainWindow {
         void settings();
 
         /**
+         * @brief Check for updates.
+         */
+        void checkUpdates();
+
+        /**
          * @brief Show about dialog.
          * @see AboutDialog
          */
