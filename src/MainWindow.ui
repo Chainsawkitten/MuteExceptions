@@ -94,6 +94,8 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionCheckUpdates"/>
+    <addaction name="separator"/>
     <addaction name="actionAbout"/>
    </widget>
    <widget class="QMenu" name="menuFile">
@@ -138,6 +140,11 @@
    </property>
    <property name="text">
     <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionCheckUpdates">
+   <property name="text">
+    <string>Check for Updates</string>
    </property>
   </action>
  </widget>
