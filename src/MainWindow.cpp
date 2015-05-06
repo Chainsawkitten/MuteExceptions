@@ -32,6 +32,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QUrl url("http://muteexceptions.chainsawkitten.net/getVersion.php");
     fileDownloader = new FileDownloader(url, this);
     connect(fileDownloader, SIGNAL(downloaded()), this, SLOT(versionDownloaded()));
+    QSettings settings;
+    settings.beginGroup("Updates");
+
+    if (settings.value("checkOnStart", true).toBool())
+        fileDownloader->start();
+
+    settings.endGroup();
 }
 
 MainWindow::~MainWindow() {

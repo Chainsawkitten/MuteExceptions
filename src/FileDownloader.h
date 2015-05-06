@@ -22,6 +22,11 @@ class FileDownloader : public QObject {
         explicit FileDownloader(QUrl url, QObject *parent = 0);
 
         /**
+         * @brief Start download.
+         */
+        void start();
+
+        /**
          * @brief Get the downloaded data.
          * @return The downloaded data
          */
@@ -37,6 +42,7 @@ class FileDownloader : public QObject {
         void fileDownloaded(QNetworkReply* pReply);
 
     private:
+        QUrl url;
         QNetworkAccessManager webCtrl;
         QByteArray _downloadedData;
 };

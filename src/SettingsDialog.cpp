@@ -16,6 +16,9 @@ void SettingsDialog::writeSettings() {
     settings.beginGroup("AudioSession");
     settings.setValue("resetMute", ui->resetMuteCheckBox->isChecked());
     settings.endGroup();
+
+    settings.beginGroup("Updates");
+    settings.setValue("checkOnStart", ui->updateCheckBox->isChecked());
 }
 
 void SettingsDialog::readSettings() {
@@ -23,5 +26,9 @@ void SettingsDialog::readSettings() {
 
     settings.beginGroup("AudioSession");
     ui->resetMuteCheckBox->setChecked(settings.value("resetMute", true).toBool());
+    settings.endGroup();
+
+    settings.beginGroup("Updates");
+    ui->updateCheckBox->setChecked(settings.value("checkOnStart", true).toBool());
     settings.endGroup();
 }
