@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,13 +16,15 @@ SOURCES += src/main.cpp \
            src/MainWindow.cpp \
            src/AudioSession.cpp \
     src/AboutDialog.cpp \
-    src/SettingsDialog.cpp
+    src/SettingsDialog.cpp \
+    src/FileDownloader.cpp
 
 HEADERS  += src/MainWindow.h \
             src/AudioSession.h \
     src/version.h \
     src/AboutDialog.h \
-    src/SettingsDialog.h
+    src/SettingsDialog.h \
+    src/FileDownloader.h
 
 FORMS    += src/MainWindow.ui \
     src/AboutDialog.ui \
