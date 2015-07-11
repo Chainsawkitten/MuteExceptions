@@ -7,4 +7,4 @@ Binary releases can be downloaded from the [website](http://muteexceptions.chain
 To build Mute Exceptions you need Qt5 available from [Qt Project](http://www.qt.io/developers/).
 
 ## License
-This project is licensed under the [MIT license](LICENSE).
+This project is released into the [public domain](LICENSE).
